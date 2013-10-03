@@ -44,7 +44,7 @@ bool Utils::printDebugMessages = false;
 
 void Utils::messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-    Q_UNUSED(context):
+    Q_UNUSED(context);
     QDateTime now = QDateTime::currentDateTime();
 
     switch (type) {
