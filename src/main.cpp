@@ -62,7 +62,7 @@ Q_IMPORT_PLUGIN(qico)
 #endif
 #endif
 
-#if QT_VERSION != QT_VERSION_CHECK(5, 2, 0)
+#if QT_VERSION != QT_VERSION_CHECK(5, 1, 1)
 #error Something is wrong with the setup. Please report to the mailing list!
 #endif
 
