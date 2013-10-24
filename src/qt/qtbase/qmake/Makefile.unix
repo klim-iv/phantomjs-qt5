@@ -4,7 +4,7 @@ QMKGENSRC = $(QMKSRC)/generators
 
 #qmake code
 OBJS=project.o option.o property.o main.o ioutils.o proitems.o \
-     qmakevfs.o qmakeglobals.o qmakeparser.o qmakeevaluator.o qmakebuiltins.o \
+     qmakeglobals.o qmakeparser.o qmakeevaluator.o qmakebuiltins.o \
      makefile.o unixmake2.o unixmake.o  \
      mingw_make.o winmakefile.o projectgenerator.o \
      meta.o makefiledeps.o metamakefile.o xmloutput.o pbuilder_pbx.o \
@@ -90,10 +90,9 @@ CPPFLAGS = -g $(EXTRA_CPPFLAGS) \
 	   -I$(BUILD_PATH)/src/corelib/global -DHAVE_QCONFIG_CPP \
 	   -I$(QMAKESPEC) \
 	   -I$(SOURCE_PATH)/tools/shared \
-	   -DQT_BUILD_QMAKE -DQT_BOOTSTRAPPED -DPROEVALUATOR_FULL \
+	   -DQT_BUILD_QMAKE -DQT_BOOTSTRAPPED -DPROEVALUATOR_FULL -DPROEVALUATOR_DEBUG \
 	   -DQT_NO_TEXTCODEC -DQT_NO_UNICODETABLES -DQT_NO_COMPONENT -DQT_NO_COMPRESS \
-	   -DQT_NO_THREAD -DQT_NO_QOBJECT -DQT_NO_GEOM_VARIANT -DQT_NO_DATASTREAM \
-	   -DQT_CRYPTOGRAPHICHASH_ONLY_SHA1
+	   -DQT_NO_THREAD -DQT_NO_QOBJECT -DQT_NO_GEOM_VARIANT -DQT_NO_DATASTREAM
 
 CXXFLAGS = $(EXTRA_CXXFLAGS) $(CPPFLAGS)
 
@@ -124,9 +123,6 @@ proitems.o: $(QMKLIBSRC)/proitems.cpp
 	$(CXX) -c -o $@ $(CXXFLAGS) $<
 
 qmakeglobals.o: $(QMKLIBSRC)/qmakeglobals.cpp
-	$(CXX) -c -o $@ $(CXXFLAGS) $<
-
-qmakevfs.o: $(QMKLIBSRC)/qmakevfs.cpp
 	$(CXX) -c -o $@ $(CXXFLAGS) $<
 
 qmakeparser.o: $(QMKLIBSRC)/qmakeparser.cpp
