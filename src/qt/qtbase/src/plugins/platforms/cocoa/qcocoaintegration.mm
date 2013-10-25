@@ -366,10 +366,12 @@ QPlatformWindow *QCocoaIntegration::createPlatformWindow(QWindow *window) const
     return new QCocoaWindow(window);
 }
 
+#ifndef QT_NO_OPENGL
 QPlatformOpenGLContext *QCocoaIntegration::createPlatformOpenGLContext(QOpenGLContext *context) const
 {
     return new QCocoaGLContext(context->format(), context->shareHandle());
 }
+#endif
 
 QPlatformBackingStore *QCocoaIntegration::createPlatformBackingStore(QWindow *window) const
 {
