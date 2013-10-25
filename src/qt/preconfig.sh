@@ -11,11 +11,11 @@ QT_CFG+=' -static'
 
 if [[ $OSTYPE = darwin* ]]; then
     QT_CFG+=' -arch x86'
-    QT_CFG+=' -cocoa'           # Cocoa only, ignore Carbon
-    QT_CFG+=' -no-dwarf2'
+    QT_CFG+=' -qpa'
 else
     QT_CFG+=' -fontconfig'      # Fontconfig for better font matching
-    QT_CFG+=' -qpa'             # X11-less with QPA (aka Lighthouse)
+    QT_CFG+=' -qpa xcb'         # X11-less with QPA (aka Lighthouse)
+    QT_CFG+=' -qt-xcb'
 fi
 
 QT_CFG+=' -debug'               # Build only for release (no debugging support)
@@ -39,8 +39,7 @@ QT_CFG+=' -no-cups'             # Disable CUPs support
 QT_CFG+=' -no-sm'
 QT_CFG+=' -no-xinerama'
 QT_CFG+=' -no-xkb'
-QT_CFG+=' -qt-xcb'
-QT_CFG+=' -qpa xcb'
+QT_CFG+=' -icu'
 
 # Use the bundled libraries, vs system-installed
 QT_CFG+=' -qt-libjpeg'
