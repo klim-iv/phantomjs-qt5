@@ -12,7 +12,7 @@ OBJECTIVE_SOURCES += main.mm \
     qnsview.mm \
     qnsviewaccessibility.mm \
     qcocoaautoreleasepool.mm \
-    qnswindowdelegate.mm
+    qnswindowdelegate.mm \
     qcocoanativeinterface.mm \
     qcocoaeventdispatcher.mm \
     qcocoaapplicationdelegate.mm \
