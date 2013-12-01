@@ -89,7 +89,7 @@ rem ============================================================================
 pushd !ROOT_DIR!\src\webkit
 call :check_qmake
 call qmake.exe
-%MAKE_TOOL% %BUILD_TYPE% 2>&1 >> !WEBKIT_LOG_FILE!.log
+%MAKE_TOOL% %BUILD_TYPE% 2>&1 >> !WEBKIT_LOG_FILE!
 popd
 EXIT /b
 
@@ -97,7 +97,7 @@ rem ============================================================================
 :build_phantomjs
 pushd !ROOT_DIR!\src
 call qmake.exe
-%MAKE_TOOL% %BUILD_TYPE% 2>&1 >> !PHANTOMJS_LOG_FILE!.log
+%MAKE_TOOL% %BUILD_TYPE% 2>&1 >> !PHANTOMJS_LOG_FILE!
 popd
 if EXIST !ROOT_DIR!\bin\phantomjs.exe (
     echo.
@@ -106,9 +106,9 @@ if EXIST !ROOT_DIR!\bin\phantomjs.exe (
 ) else (
     echo:
     echo Unable to find phantomjs.exe. Please, check log files:
-    echo Qt: !QT_LOG_FILE!.log
-    echo Webkit: !WEBKIT_LOG_FILE!.log
-    echo PhantomJS: !PHANTOMJS_LOG_FILE!.log
+    echo Qt: !QT_LOG_FILE!
+    echo Webkit: !WEBKIT_LOG_FILE!
+    echo PhantomJS: !PHANTOMJS_LOG_FILE!
     echo:
 )
 EXIT /b
