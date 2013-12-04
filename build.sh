@@ -90,5 +90,8 @@ EOF
 fi
 
 cd src/qt && ./preconfig.sh --jobs $COMPILE_JOBS --qt-config "$QT_CFG" && cd ../..
-src/qt/bin/qmake $QMAKE_ARGS
+export SQLITE3SRCDIR=$PWD/src/qt/qtbase/3rdparty/sqlite/
+cd src/webkit
+src/qt/qtbase/bin/qmake $QMAKE_ARGS && cd ../..
+src/qt/qtbase/bin/qmake $QMAKE_ARGS
 make -j$COMPILE_JOBS
