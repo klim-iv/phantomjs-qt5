@@ -47,9 +47,7 @@
 #include <qpa/qplatformwindow.h>
 #include <QRect>
 
-#ifndef QT_NO_OPENGL
 #include "qcocoaglcontext.h"
-#endif
 #include "qnsview.h"
 
 QT_FORWARD_DECLARE_CLASS(QCocoaWindow)
@@ -63,7 +61,7 @@ QT_FORWARD_DECLARE_CLASS(QCocoaWindow)
 @end
 
 @interface QNSPanel : NSPanel {
-    @public QT_PREPEND_NAMESPACE(QCocoaWindow) *m_cocoaPlatformWindow;
+    @public QCocoaWindow *m_cocoaPlatformWindow;
 }
 - (void)clearPlatformWindow;
 - (BOOL)canBecomeKeyWindow;
@@ -144,10 +142,8 @@ public:
     NSUInteger windowStyleMask(Qt::WindowFlags flags);
     void setWindowShadow(Qt::WindowFlags flags);
 
-#ifndef QT_NO_OPENGL
     void setCurrentContext(QCocoaGLContext *context);
     QCocoaGLContext *currentContext() const;
-#endif
 
     bool setWindowModified(bool modified) Q_DECL_OVERRIDE;
 
@@ -158,11 +154,15 @@ public:
     void setMenubar(QCocoaMenuBar *mb);
     QCocoaMenuBar *menubar() const;
 
+    void setWindowCursor(NSCursor *cursor);
+
     void registerTouch(bool enable);
 
     qreal devicePixelRatio() const;
+    bool isWindowExposable();
     void exposeWindow();
     void obscureWindow();
+    void updateExposedGeometry();
     QWindow *childWindowAt(QPoint windowPoint);
 protected:
     // NSWindow handling. The QCocoaWindow/QNSView can either be displayed
@@ -194,23 +194,26 @@ public: // for QNSView
     Qt::WindowState m_synchedWindowState;
     Qt::WindowModality m_windowModality;
     QPointer<QWindow> m_activePopupWindow;
-    QPointer<QWindow> m_underMouseWindow;
+    QPointer<QWindow> m_enterLeaveTargetWindow;
+    bool m_windowUnderMouse;
 
     bool m_inConstructor;
-
-#ifndef QT_NO_OPENGL
     QCocoaGLContext *m_glContext;
-#endif
-
     QCocoaMenuBar *m_menubar;
+    NSCursor *m_windowCursor;
 
     bool m_hasModalSession;
     bool m_frameStrutEventsEnabled;
+    bool m_geometryUpdateExposeAllowed;
     bool m_isExposed;
+    QRect m_exposedGeometry;
     int m_registerTouchCount;
+    bool m_resizableTransientParent;
+    bool m_overrideBecomeKey;
 
     static const int NoAlertRequest;
     NSInteger m_alertRequest;
+    id monitor;
 };
 
 QT_END_NAMESPACE

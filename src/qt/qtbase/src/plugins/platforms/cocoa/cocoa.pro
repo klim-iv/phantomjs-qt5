@@ -13,6 +13,7 @@ OBJECTIVE_SOURCES += main.mm \
     qnsviewaccessibility.mm \
     qcocoaautoreleasepool.mm \
     qnswindowdelegate.mm \
+    qcocoaglcontext.mm \
     qcocoanativeinterface.mm \
     qcocoaeventdispatcher.mm \
     qcocoaapplicationdelegate.mm \
@@ -83,14 +84,6 @@ RESOURCES += qcocoaresources.qrc
 LIBS += -framework Cocoa -framework Carbon -framework IOKit
 
 QT += core-private gui-private platformsupport-private
-
-contains(QT_CONFIG, opengl) {
-    OBJECTIVE_SOURCES += \
-        qcocoaglcontext.cpp
-
-    HEADERS += \
-        qcocoaglcontext.h
-}
 
 qtHaveModule(widgets) {
     OBJECTIVE_SOURCES += \

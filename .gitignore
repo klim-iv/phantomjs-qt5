@@ -54,4 +54,4 @@ tools/dump_syms.app/
 # Build results
 [Dd]ebug*/
 [Rr]elease/
-bin/
+/bin/*
