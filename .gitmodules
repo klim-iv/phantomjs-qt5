@@ -1,4 +1,0 @@
-[submodule "src/webkit"]
-	path = src/webkit
-	url = https://github.com/Vitallium/webkit
-	branch = phantomjs
