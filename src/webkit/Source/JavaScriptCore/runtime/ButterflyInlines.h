@@ -32,6 +32,7 @@
 #include "CopyVisitor.h"
 #include "VM.h"
 #include "Structure.h"
+#include "IndexingHeaderInlines.h"
 
 namespace JSC {
 
