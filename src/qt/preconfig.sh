@@ -33,7 +33,6 @@ QT_CFG+=' -D QT_NO_GRAPHICSEFFECT'
 # Unix
 QT_CFG+=' -no-dbus'             # Disable D-Bus feature
 QT_CFG+=' -no-glib'             # No need for Glib integration
-QT_CFG+=' -no-gstreamer'        # Turn off GStreamer support
 QT_CFG+=' -no-gtkstyle'         # Disable theming integration with Gtk+
 QT_CFG+=' -no-cups'             # Disable CUPs support
 QT_CFG+=' -no-sm'
