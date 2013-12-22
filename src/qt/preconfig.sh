@@ -18,7 +18,7 @@ else
     QT_CFG+=' -qt-xcb'
 fi
 
-QT_CFG+=' -debug'               # Build only for release (no debugging support)
+QT_CFG+=' -release'             # Build only for release (no debugging support)
 QT_CFG+=' -nomake examples'     # Don't build any examples
 QT_CFG+=' -nomake tools'        # Don't built the tools
 
