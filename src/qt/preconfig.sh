@@ -14,8 +14,8 @@ if [[ $OSTYPE = darwin* ]]; then
     QT_CFG+=' -qpa'
 else
     QT_CFG+=' -fontconfig'      # Fontconfig for better font matching
-    QT_CFG+=' -qpa xcb'         # X11-less with QPA (aka Lighthouse)
-    QT_CFG+=' -qt-xcb'
+    QT_CFG+=' -no-qpa-platform-guard'
+    QT_CFG+=' -system-xcb'
 fi
 
 QT_CFG+=' -release'             # Build only for release (no debugging support)
@@ -25,6 +25,8 @@ QT_CFG+=' -nomake tools'        # Don't built the tools
 # Unnecessary Qt modules
 QT_CFG+=' -no-opengl'
 QT_CFG+=' -no-openvg'
+QT_CFG+=' -no-eglfs'
+QT_CFG+=' -no-opengl'
 
 # Unnecessary Qt features
 QT_CFG+=' -D QT_NO_GRAPHICSVIEW'
@@ -38,7 +40,9 @@ QT_CFG+=' -no-cups'             # Disable CUPs support
 QT_CFG+=' -no-sm'
 QT_CFG+=' -no-xinerama'
 QT_CFG+=' -no-xkb'
+QT_CFG+=' -no-xcb'
 QT_CFG+=' -icu'
+QT_CFG+=' -no-pkg-config'
 
 # Use the bundled libraries, vs system-installed
 QT_CFG+=' -qt-libjpeg'
