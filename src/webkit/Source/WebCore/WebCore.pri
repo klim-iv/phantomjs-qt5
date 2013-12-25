@@ -116,7 +116,8 @@ use?(LIBXML2) {
         LIBS += -lxml2
     } else:!contains(QT_CONFIG, no-pkg-config) {
         PKGCONFIG += libxml-2.0
-    } else {
+    } else:!win32-* {
+        INCLUDEPATH += /usr/include/libxml2
         LIBS += -lxml2
     }
 }
