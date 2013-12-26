@@ -14,8 +14,7 @@ if [[ $OSTYPE = darwin* ]]; then
     QT_CFG+=' -qpa'
 else
     QT_CFG+=' -fontconfig'      # Fontconfig for better font matching
-    QT_CFG+=' -no-qpa-platform-guard'
-    QT_CFG+=' -system-xcb'
+    QT_CFG+=' -qpa minimal'
 fi
 
 QT_CFG+=' -release'             # Build only for release (no debugging support)
